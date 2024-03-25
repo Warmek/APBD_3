@@ -7,10 +7,12 @@ namespace LegacyApp
     public class UserService
     {
         private IUserInputValidator _inputValidator;
+        private IClientRepo _clientRepo;
 
         public UserService()
         {
             _inputValidator = new UserInputValidator();
+            _clientRepo = new ClientRepository();
         }
         
         public bool AddUser(string firstName, string lastName, string email, DateTime dateOfBirth, int clientId)
@@ -23,8 +25,7 @@ namespace LegacyApp
                 return false;
             
             
-            var clientRepository = new ClientRepository();
-            var client = clientRepository.GetById(clientId);
+            var client = _clientRepo.GetById(clientId);
 
             var user = new User
             {

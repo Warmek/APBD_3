@@ -11,6 +11,6 @@ public abstract class ClientValidator
         _UserCredit = userCredit;
     }
 
-    public abstract bool validateClient(Client client);
+    public abstract bool validateClient(ref User user);
 
 }

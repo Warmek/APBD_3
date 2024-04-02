@@ -8,8 +8,10 @@ public class VeryImportantClientValidator : ClientValidator
     {
     }
 
-    public override bool validateClient(Client client)
+    public override bool validateClient(ref User user)
     {
-        throw new System.NotImplementedException();
+        user.HasCreditLimit = false;
+
+        return !(user.HasCreditLimit && user.CreditLimit < 500);
     }
 }

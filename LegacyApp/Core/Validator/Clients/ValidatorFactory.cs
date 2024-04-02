@@ -17,7 +17,7 @@ public class ValidatorFactory : IValidatorFactory
         try
         {
             return (ClientValidator)Activator.CreateInstance(
-                Type.GetType($"LegacyApp.Core.Validator.Clients.{client.Name}Validator"), new object[] { _UserCredit });
+                Type.GetType($"LegacyApp.Core.Validator.{client.Type}Validator"), new object[] { _UserCredit });
         }
         catch
         {

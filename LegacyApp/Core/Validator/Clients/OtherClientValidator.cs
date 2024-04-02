@@ -8,8 +8,12 @@ public class OtherClientValidator : ClientValidator
     {
     }
 
-    public override bool validateClient(Client client)
+    public override bool validateClient(ref User user)
     {
-        throw new System.NotImplementedException();
+        user.HasCreditLimit = true;
+        int creditLimit = _UserCredit.GetCreditLimit(user.LastName, user.DateOfBirth);
+        user.CreditLimit = creditLimit;
+
+        return !(user.HasCreditLimit && user.CreditLimit < 500);
     }
 }
